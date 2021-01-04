@@ -37,7 +37,6 @@ class ContactData extends Component {
         ).catch(
             error => {this.setState({loading: false})}
         );
-        alert('You can continue!');
     }
     render() {
         let form =(
@@ -46,7 +45,7 @@ class ContactData extends Component {
                     <input className={classes.Input} type="text" name="email" placeholder="Enter your email" />
                     <input className={classes.Input} type="text" name="street" placeholder="Enter your street" />
                     <input className={classes.Input} type="text" name="postal" placeholder="Enter your Postal Code" />
-                    <Button btnType="Success">ORDER</Button>
+                    <Button btnType="Success" clicked={this.orderHandler}>ORDER</Button>
                 </form>
         );
         if(this.state.loading){
