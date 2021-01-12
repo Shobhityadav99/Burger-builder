@@ -7,9 +7,6 @@ import * as actions from '../../store/actions/index';
 
 class Checkout extends Component {
 
-    componentWillMount() {
-        this.props.OnInitPurchase();
-    }
 
     // state={
     //     ingredients: null,
@@ -48,6 +45,7 @@ class Checkout extends Component {
             const purchasedRedirect = this.props.purchased ? <Redirect to="/" /> : null
             summary=(
             <div>
+                {purchasedRedirect}
             <CheckoutSummary 
             ingredients={this.props.ings}
             checkoutCancelled={this.checkoutCancelHandler} 
@@ -66,10 +64,5 @@ const mapStateToProps = state =>{
     }
 };
 
-const mapDispatchToProps = dispatch => {
-    return{
-        OnInitPurchase: () => dispatch(actions.initIngredients())
-    }
-}
 
-export default connect(mapStateToProps , mapDispatchToProps)(Checkout);
+export default connect(mapStateToProps)(Checkout);
