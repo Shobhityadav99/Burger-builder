@@ -69,7 +69,7 @@ class Auth extends Component {
 
         return isValid;
     }
-
+    
     inputChangedHandler =(event, controlName) => {
         const updateControls={
             ...this.state.controls,
@@ -112,6 +112,7 @@ class Auth extends Component {
                     {form}
                     <Button btnType="Success">Submit</Button>
                 </form>
+                <Button btnType="Danger">SWITCH TO SIGNIN</Button>
             </div>
         );
     }
