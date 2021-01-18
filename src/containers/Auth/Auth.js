@@ -72,7 +72,11 @@ class Auth extends Component {
         return isValid;
     }
 
-
+    componentDidMount() {
+        if(!this.props.building && this.props.authRedirectPath !== '/'){
+            this.props.onSetAuthRedirectingPath();
+        }
+    }
     
     inputChangedHandler =(event, controlName) => {
         const updateControls={
@@ -133,7 +137,7 @@ class Auth extends Component {
 
         let authRedirect=null;
         if(this.props.isAuthenticated) {
-            authRedirect= <Redirect to="/" />
+            authRedirect= <Redirect to={this.props.authRedirectPath} />
         }
         return(
             <div className={classes.Auth}>
@@ -156,12 +160,15 @@ const mapStateToProps = state => {
         loading: state.auth.loading,
         error: state.auth.error,
         isAuthenticated: state.auth.token !== null,
+        buildingBurger: state.burgerBuilder.building,
+        authRedirectPath: state.auth.authRedirectingPath
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        OnAuth: (email ,password ,isSignUp) => dispatch(actions.auth(email,password,isSignUp))
+        OnAuth: (email ,password ,isSignUp) => dispatch(actions.auth(email,password,isSignUp)),
+        onSetAuthRedirectingPath: () => dispatch(actions.setAuthRedirectPath('/')),
     }
 }
 
