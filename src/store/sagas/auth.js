@@ -3,7 +3,6 @@ import { delay } from 'redux-saga/effects';
 import axios from 'axios';
 
 import * as actions from '../actions/index';
-import { func } from 'prop-types';
 export function* logoutSaga(action) {
     yield localStorage.removeItem('token');
     yield localStorage.removeItem('expirationDate');
