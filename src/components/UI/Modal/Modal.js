@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import classes from './Modal.css';
 import Aux from '../../../hoc/Auxillary';
 import Backdrop from '../Backdrop/Backdrop';
@@ -22,4 +22,4 @@ const modal = props => {
         );
     
 }
-export default React.memo(modal, (prevProps,nextProps) => (nextProps.show===props.show && nextProps.children === props.children));
+export default React.memo(modal, (prevProps,nextProps) => (nextProps.show===prevProps.show && nextProps.children === prevProps.children));
